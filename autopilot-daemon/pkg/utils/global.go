@@ -1,13 +1,14 @@
 package utils
 
 import (
+	"os"
 	"sync"
 
 	"k8s.io/client-go/kubernetes"
 )
 
 type InitConfig struct {
-	BWThreshold string
+	BWThreshold int
 }
 
 var UserConfig InitConfig
@@ -23,3 +24,7 @@ var HealthcheckLock sync.Mutex
 
 var CPUModel string
 var GPUModel string
+
+var NodeName string = os.Getenv("NODE_NAME")
+var Namespace string = os.Getenv("NAMESPACE")
+var PodName string = os.Getenv("POD_NAME")
